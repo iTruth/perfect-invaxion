@@ -1,0 +1,750 @@
+[
+  {
+    "accId" : 1,
+    "name"  : "Aquatrax",
+    "headId" : 10030,
+    "token"  : "",
+    "country" : 1,
+    "steamId" : "",
+    "level"   : 999,
+    "curExp"  : 0,
+    "maxExp"  : 9999,
+    "selectCharId" : 10030,
+    "language"     : 2,
+    "sessionId"    : 0,
+    "titleId"      : 10001,
+    "totalScore"   : 0,
+    "totalArcadeScore" : 0,
+    "onlineTime"       : 0,
+    "selectThemeId"    : 1,
+    "total4KScore"     : 0,
+    "total6KScore"     : 0,
+    "total8KScore"     : 0,
+    "charId"           : 40000000001,
+    "cosmicTourData"   : {
+      "storyData" : [
+      ]
+    },
+    "team"             : {
+      "teamId" : 0,
+      "teamName" : "",
+      "uploadSongCount" : 3,
+      "canUploadSong"   : 1,
+      "buffList"        : [
+      ]
+    },
+    "arcadeData"       : {
+      "key4List" : {
+        "easyList" : [
+        ],
+        "normalList" : [
+        ],
+        "hardList"   : [
+        ]
+      },
+      "key6List" : {
+        "easyList" : [
+        ],
+        "normalList" : [
+        ],
+        "hardList"   : [
+        ]
+      },
+      "key8List" : {
+        "easyList" : [
+        ],
+        "normalList" : [
+        ],
+        "hardList"   : [
+        ]
+      }
+    },
+    "scoreList"        : {
+      "key4List" : {
+        "easyList" : [
+        ],
+        "normalList" : [
+        ],
+        "hardList"   : [
+        ]
+      },
+      "key6List" : {
+        "easyList" : [
+        ],
+        "normalList" : [
+        ],
+        "hardList"   : [
+        ]
+      },
+      "key8List" : {
+        "easyList" : [
+        ],
+        "normalList" : [
+        ],
+        "hardList"   : [
+        ]
+      }
+    },
+    "vipInfo"          : {
+      "level" : 999,
+      "exp"   : 9999,
+      "levelUpExp" : 9999,
+      "inSubscription" : 1
+    },
+    "themeList"        : {
+      "list" : [
+        {
+          "themeId": 1
+        },
+        {
+          "themeId": 2
+        },
+        {
+          "themeId": 3
+        },
+        {
+          "themeId": 4
+        },
+        {
+          "themeId": 5
+        },
+        {
+          "themeId": 6
+        },
+        {
+          "themeId": 7
+        },
+        {
+          "themeId": 8
+        },
+        {
+          "themeId": 9
+        },
+        {
+          "themeId": 10
+        },
+        {
+          "themeId": 11
+        },
+        {
+          "themeId": 12
+        },
+        {
+          "themeId": 13
+        },
+        {
+          "themeId": 14
+        }
+      ]
+    },
+    "currencyInfo"     : {
+      "gold" : 999999,
+      "diamond" : 999999,
+      "curStamina" : 99,
+      "maxStamina" : 99,
+      "honourPoint" : 999999
+    },
+    "songList"         : {
+      "list" : [
+        {
+          "songId": 80031
+        },
+        {
+          "songId": 80008
+        },
+        {
+          "songId": 80011
+        },
+        {
+          "songId": 80012
+        },
+        {
+          "songId": 80010
+        },
+        {
+          "songId": 80034
+        },
+        {
+          "songId": 80007
+        },
+        {
+          "songId": 80015
+        },
+        {
+          "songId": 80013
+        },
+        {
+          "songId": 80009
+        },
+        {
+          "songId": 80014
+        },
+        {
+          "songId": 80019
+        },
+        {
+          "songId": 80020
+        },
+        {
+          "songId": 80018
+        },
+        {
+          "songId": 63122
+        },
+        {
+          "songId": 63123
+        },
+        {
+          "songId": 63204
+        },
+        {
+          "songId": 62005
+        },
+        {
+          "songId": 62006
+        },
+        {
+          "songId": 63103
+        },
+        {
+          "songId": 69008
+        },
+        {
+          "songId": 68008
+        },
+        {
+          "songId": 68108
+        },
+        {
+          "songId": 80002
+        },
+        {
+          "songId": 64005
+        },
+        {
+          "songId": 69018
+        },
+        {
+          "songId": 68002
+        },
+        {
+          "songId": 68001
+        },
+        {
+          "songId": 82005
+        },
+        {
+          "songId": 82006
+        },
+        {
+          "songId": 82007
+        },
+        {
+          "songId": 82011
+        },
+        {
+          "songId": 65102
+        },
+        {
+          "songId": 68106
+        },
+        {
+          "songId": 64003
+        },
+        {
+          "songId": 62021
+        },
+        {
+          "songId": 65036
+        }
+      ],
+      "favoriteList" : [
+      ]
+    },
+    "CharacterList"    : {
+      "list" : [
+        {
+          "charId": 10010,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 10020,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 10030,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 10040,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 10050,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 10060,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 1006010,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 20010,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 20020,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 20030,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 20040,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 20050,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 20060,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 20070,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 20080,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 20090,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 20100,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 20110,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 20120,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 20130,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 20140,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 20150,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 20160,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 20170,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 30010,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 30020,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 30030,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 30040,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 3004010,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 30050,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 30060,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 30070,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 30080,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 30090,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 30100,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 30110,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40010,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40020,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40030,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40040,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40050,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40060,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40070,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40080,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40090,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40100,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40110,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40120,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40130,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40140,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40150,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40160,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40170,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40180,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40190,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40200,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40210,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40220,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 4022010,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40230,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40240,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40250,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40260,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40270,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40280,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40290,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40300,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40310,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40320,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 40330,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 50010,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 50020,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 50030,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 5003010,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 50040,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 50050,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 5005010,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 50060,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 50070,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        },
+        {
+          "charId": 50080,
+          "level": 1,
+          "exp": 0,
+          "playCount": 0
+        }
+      ]
+    }
+  }
+]
+

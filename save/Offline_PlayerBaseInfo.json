@@ -1,0 +1,31 @@
+{
+    "accId": 1,
+    "charId": 4000000001,
+    "charName": "Aquatrax",
+    "headId": 10030,
+    "level": 999,
+    "curExp": 0,
+    "maxExp": 9999,
+    "guideStep": 4,
+    "curCharacterId": 10030,
+    "curThemeId": 1,
+    "onlineTime": 0,
+    "needReqAppReceipt": 0,
+    "activePoint": 0,
+    "preRankId": 201,
+    "guideList": [
+        6,
+        7,
+        8,
+        9,
+        1,
+        2,
+        3,
+        4,
+        5
+    ],
+    "country": 1,
+    "preRankId4K": 202,
+    "preRankId6K": 201,
+    "titleId": 10001
+}
