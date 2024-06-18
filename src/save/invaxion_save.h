@@ -94,6 +94,8 @@ public:
 		save_data["/0"_json_pointer]["token"] = existing_save["/0"_json_pointer]["token"];
 		save_data["/0"_json_pointer]["steamId"] = existing_save["/0"_json_pointer]["steamId"];
 		save_data["/0"_json_pointer]["sessionId"] = existing_save["/0"_json_pointer]["sessionId"];
+		save_data["/0"_json_pointer]["cosmicTourData"] = existing_save["/0"_json_pointer]["cosmicTourData"];
+		save_data["/0"_json_pointer]["team"] = existing_save["/0"_json_pointer]["team"];
 
 		return write_json(save_data);
 	}
