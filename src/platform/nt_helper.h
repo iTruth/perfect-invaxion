@@ -10,7 +10,7 @@ namespace perfect_invaxion {
 namespace winnt {
 
 typedef enum _PROCESSINFOCLASS {
-    ProcessBasicInformation, // q: PROCESS_BASIC_INFORMATION, PROCESS_EXTENDED_BASIC_INFORMATION
+	ProcessBasicInformation, // q: PROCESS_BASIC_INFORMATION, PROCESS_EXTENDED_BASIC_INFORMATION
 } PROCESSINFOCLASS;
 
 typedef NTSTATUS (*NtQueryInformationProcess_type)(
@@ -19,32 +19,32 @@ typedef NTSTATUS (*NtQueryInformationProcess_type)(
 	PVOID            ProcessInformation,
 	ULONG            ProcessInformationLength,
 	PULONG           ReturnLength
-);
+	);
 
 typedef struct _ALK_PROCESS_BASIC_INFORMATION {
-    PVOID Reserved1;
-    void* PebBaseAddress;
-    PVOID Reserved2[2];
-    ULONG_PTR UniqueProcessId;
-    ULONG_PTR ParentProcessId;
+	PVOID Reserved1;
+	void* PebBaseAddress;
+	PVOID Reserved2[2];
+	ULONG_PTR UniqueProcessId;
+	ULONG_PTR ParentProcessId;
 } ALK_PROCESS_BASIC_INFORMATION;
 
 #define NT_SUCCESS(Status) (((NTSTATUS)(Status)) >= 0)
 
 bool is_launch_from_explorer()
 {
-    DWORD explorer_pid = 0;
-    GetWindowThreadProcessId(GetShellWindow(), &explorer_pid);
-    
-    NtQueryInformationProcess_type NtQueryInformationProcess =
+	DWORD explorer_pid = 0;
+	GetWindowThreadProcessId(GetShellWindow(), &explorer_pid);
+
+	NtQueryInformationProcess_type NtQueryInformationProcess =
 		reinterpret_cast<NtQueryInformationProcess_type>(
-			GetProcAddress(LoadLibraryA("ntdll.dll"), "NtQueryInformationProcess")
-		);
-    if (NtQueryInformationProcess == nullptr)
+				GetProcAddress(LoadLibraryA("ntdll.dll"), "NtQueryInformationProcess")
+				);
+	if (NtQueryInformationProcess == nullptr)
 		return false;
 
-    ALK_PROCESS_BASIC_INFORMATION pbi;
-    SecureZeroMemory(&pbi, sizeof(ALK_PROCESS_BASIC_INFORMATION));
+	ALK_PROCESS_BASIC_INFORMATION pbi;
+	SecureZeroMemory(&pbi, sizeof(ALK_PROCESS_BASIC_INFORMATION));
 
 	NTSTATUS status =
 		NtQueryInformationProcess(
@@ -54,9 +54,9 @@ bool is_launch_from_explorer()
 				sizeof(ALK_PROCESS_BASIC_INFORMATION),
 				0
 				);
-    if (!NT_SUCCESS(status))
+	if (!NT_SUCCESS(status))
 		return false;
-    
+
 	return pbi.ParentProcessId == explorer_pid;
 }	
 
