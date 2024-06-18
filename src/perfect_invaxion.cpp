@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 		}
 	} _on_exit;
 
-	spdlog::info("Perfect Invaxion Project v1.0");
+	spdlog::info("Perfect Invaxion Project " PROJECT_VERSION);
 
 	perfect_invaxion::save::invaxion_save save;
 

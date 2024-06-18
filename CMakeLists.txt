@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 3.5)
 
-project(pinvaxion VERSION 1.0 LANGUAGES C CXX)
+project(pinvaxion VERSION 1.1 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -10,6 +10,8 @@ find_package(spdlog REQUIRED)
 add_executable(${PROJECT_NAME}
 	${CMAKE_CURRENT_LIST_DIR}/src/perfect_invaxion.cpp
 	)
+
+add_definitions(-DPROJECT_VERSION=\"v${CMAKE_PROJECT_VERSION}\")
 
 target_include_directories(${PROJECT_NAME} PRIVATE
 	${CMAKE_CURRENT_LIST_DIR}/src/
