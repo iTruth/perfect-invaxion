@@ -79,8 +79,6 @@ public:
 			return false;
 		}
 
-		auto existing_save = read_json();
-
 		std::ifstream save_file(custom_save.data());
 		if (!save_file.is_open()) {
 			spdlog::warn("While fixing server emulator save:");
@@ -90,14 +88,43 @@ public:
 		}
 
 		auto save_data = nlohmann::json::parse(save_file);
-		save_data["/0"_json_pointer]["name"] = existing_save["/0"_json_pointer]["name"];
-		save_data["/0"_json_pointer]["token"] = existing_save["/0"_json_pointer]["token"];
-		save_data["/0"_json_pointer]["steamId"] = existing_save["/0"_json_pointer]["steamId"];
-		save_data["/0"_json_pointer]["sessionId"] = existing_save["/0"_json_pointer]["sessionId"];
-		save_data["/0"_json_pointer]["cosmicTourData"] = existing_save["/0"_json_pointer]["cosmicTourData"];
-		save_data["/0"_json_pointer]["team"] = existing_save["/0"_json_pointer]["team"];
+		auto existing_save = read_json();
+		existing_save["/0"_json_pointer]["CharacterList"] = save_data["/0"_json_pointer]["CharacterList"];
+		existing_save["/0"_json_pointer]["songList"] = save_data["/0"_json_pointer]["songList"];
+		existing_save["/0"_json_pointer]["themeList"] = save_data["/0"_json_pointer]["themeList"];
+		existing_save["/0"_json_pointer]["currencyInfo"] = save_data["/0"_json_pointer]["currencyInfo"];
+		existing_save["/0"_json_pointer]["vipInfo"] = save_data["/0"_json_pointer]["vipInfo"];
+		existing_save["/0"_json_pointer]["level"] = save_data["/0"_json_pointer]["level"];
+		existing_save["/0"_json_pointer]["curExp"] = save_data["/0"_json_pointer]["curExp"];
 
-		return write_json(save_data);
+		return write_json(existing_save);
+	}
+
+
+	EXECUTOR_REQUIRE(detail::windows_registry)
+	bool fix_offline_player_base_info(std::string_view target_field, std::string_view custom_save)
+	{
+		select(target_field);
+
+		if (save_.is_exist()) {
+			std::ifstream save_file(custom_save.data());
+			if (!save_file.is_open()) {
+				spdlog::warn("While fixing {}:", target_field);
+				spdlog::warn("\t{} not found!", custom_save);
+				spdlog::warn("\tSkip...");
+				return false;
+			}
+
+			auto save_data = nlohmann::json::parse(save_file);
+			auto existing_save = read_json();
+			existing_save["level"] = save_data["level"];
+			existing_save["curExp"] = save_data["curExp"];
+			existing_save["maxExp"] = save_data["maxExp"];
+
+			return write_json(existing_save);
+		} else {
+			return fix_offline_save(target_field, custom_save);
+		}
 	}
 
 	EXECUTOR_REQUIRE(detail::windows_registry)

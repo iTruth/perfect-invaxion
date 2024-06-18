@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 			"save/ServerEmulator_Save.json"
 			);
 
-	save.fix_offline_save(
+	save.fix_offline_player_base_info(
 			"Offline_PlayerBaseInfo_h911750931",
 			"save/Offline_PlayerBaseInfo.json"
 			);
