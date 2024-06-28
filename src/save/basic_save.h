@@ -6,18 +6,15 @@
 namespace perfect_invaxion {
 namespace save {
 
-template<typename Executor>
+template <typename Executor>
 class basic_save {
 public:
-
-	typedef Executor executor_type ;
+	typedef Executor executor_type;
 	typedef typename executor_type::location_type location_type;
 
 	basic_save() = default;
 
-	explicit basic_save(const location_type& loc):
-		executor_(loc)
-	{ }
+	explicit basic_save(const location_type& loc) : executor_(loc) {}
 
 	bool open(const location_type& loc)
 	{
@@ -39,13 +36,13 @@ public:
 		return executor_.create();
 	}
 
-	template<typename DataType>
+	template <typename DataType>
 	bool write(DataType&& data)
 	{
 		return executor_.write(std::forward<DataType>(data));
 	}
 
-	template<typename DataType>
+	template <typename DataType>
 	bool read(DataType& data)
 	{
 		return executor_.read(data);
@@ -80,7 +77,7 @@ private:
 	executor_type executor_;
 };
 
-} // namespace save
-} // namespace perfect_invaxion
+}  // namespace save
+}  // namespace perfect_invaxion
 
-#endif // BASIC_SAVE_
+#endif	// BASIC_SAVE_

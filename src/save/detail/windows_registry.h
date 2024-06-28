@@ -2,46 +2,42 @@
 #define WINDOWS_REGISTRY_ 1
 
 #include <windows.h>
+
 #include <atomic>
-#include <mutex>
 #include <memory>
+#include <mutex>
 
 namespace perfect_invaxion {
 namespace save {
 namespace detail {
 
-#undef LOCK_GUARD_2
-#define LOCK_GUARD_2(LOCK1, LOCK2) \
-	std::lock(LOCK1, LOCK2);\
-	std::lock_guard<std::mutex> lck1_##LOCK1 { LOCK1, std::adopt_lock };\
-	std::lock_guard<std::mutex> lck2_##LOCK2 { LOCK2, std::adopt_lock };
+#define LOCK_GUARD_2(LOCK1, LOCK2)                                             \
+	std::lock(LOCK1, LOCK2);                                                   \
+	std::lock_guard<std::mutex> lck1_##LOCK1{LOCK1, std::adopt_lock};          \
+	std::lock_guard<std::mutex> lck2_##LOCK2{LOCK2, std::adopt_lock};
 
 namespace windows_registry_helper {
 
-template<typename T>
+template <typename T>
 struct associate_type;
 
-template<>
-struct associate_type<int32_t>
-{
+template <>
+struct associate_type<int32_t> {
 	static constexpr DWORD reg_type = REG_DWORD;
 };
 
-template<>
-struct associate_type<uint32_t>
-{
+template <>
+struct associate_type<uint32_t> {
 	static constexpr DWORD reg_type = REG_DWORD;
 };
 
-template<>
-struct associate_type<int64_t>
-{
+template <>
+struct associate_type<int64_t> {
 	static constexpr DWORD reg_type = REG_QWORD;
 };
 
-template<>
-struct associate_type<uint64_t>
-{
+template <>
+struct associate_type<uint64_t> {
 	static constexpr DWORD reg_type = REG_QWORD;
 };
 
@@ -90,13 +86,7 @@ public:
 		LOCK_GUARD_2(key_lock_, loc_lock_);
 
 		LSTATUS status = RegQueryValueExA(
-				key_,
-				loc_.elem.c_str(),
-				0,
-				nullptr,
-				nullptr,
-				nullptr
-				);
+			key_, loc_.elem.c_str(), 0, nullptr, nullptr, nullptr);
 
 		return status == ERROR_SUCCESS;
 	}
@@ -113,30 +103,25 @@ public:
 		if (!is_open())
 			return true;
 
-		std::lock_guard<std::mutex> key_lg { key_lock_ };
+		std::lock_guard<std::mutex> key_lg{key_lock_};
 		LSTATUS status = RegCloseKey(key_);
 		open_flag_.store(false, std::memory_order_release);
 		return status == ERROR_SUCCESS;
 	}
 
-	template<typename T,
+	template <typename T,
 		typename = typename std::enable_if<
-			windows_registry_helper::associate_type<T>::reg_type != REG_NONE
-			>::type>
+			windows_registry_helper::associate_type<T>::reg_type
+			!= REG_NONE>::type>
 	bool write(T v) const noexcept
 	{
 		assert(is_open());
 
 		LOCK_GUARD_2(key_lock_, loc_lock_);
 
-		LSTATUS status = RegSetValueExA(
-				key_,
-				loc_.elem.c_str(),
-				0,
-				windows_registry_helper::associate_type<T>::reg_type,
-				reinterpret_cast<const BYTE*>(&v),
-				sizeof(T)
-				);
+		LSTATUS status = RegSetValueExA(key_, loc_.elem.c_str(), 0,
+			windows_registry_helper::associate_type<T>::reg_type,
+			reinterpret_cast<const BYTE*>(&v), sizeof(T));
 		return status == ERROR_SUCCESS;
 	}
 
@@ -146,21 +131,15 @@ public:
 
 		LOCK_GUARD_2(key_lock_, loc_lock_);
 
-		LSTATUS status = RegSetValueExA(
-				key_,
-				loc_.elem.c_str(),
-				0,
-				REG_BINARY,
-				reinterpret_cast<const BYTE*>(v.c_str()),
-				v.length() + 1
-				);
+		LSTATUS status = RegSetValueExA(key_, loc_.elem.c_str(), 0, REG_BINARY,
+			reinterpret_cast<const BYTE*>(v.c_str()), v.length() + 1);
 		return status == ERROR_SUCCESS;
 	}
 
-	template<typename T,
+	template <typename T,
 		typename = typename std::enable_if<
-			windows_registry_helper::associate_type<T>::reg_type != REG_NONE
-			>::type>
+			windows_registry_helper::associate_type<T>::reg_type
+			!= REG_NONE>::type>
 	bool read(T& v) const noexcept
 	{
 		assert(is_open());
@@ -169,14 +148,8 @@ public:
 
 		DWORD size = sizeof(T);
 
-		LSTATUS status = RegQueryValueExA(
-				key_,
-				loc_.elem.c_str(),
-				0,
-				nullptr,
-				reinterpret_cast<LPBYTE>(&v),
-				&size
-				);
+		LSTATUS status = RegQueryValueExA(key_, loc_.elem.c_str(), 0, nullptr,
+			reinterpret_cast<LPBYTE>(&v), &size);
 
 		return status == ERROR_SUCCESS;
 	}
@@ -189,24 +162,12 @@ public:
 
 		DWORD size = 0;
 		LSTATUS status = RegQueryValueExA(
-				key_,
-				loc_.elem.c_str(),
-				0,
-				nullptr,
-				nullptr,
-				&size
-				);
+			key_, loc_.elem.c_str(), 0, nullptr, nullptr, &size);
 
-		std::unique_ptr<BYTE[]> buf { new BYTE[size] };
-			
+		std::unique_ptr<BYTE[]> buf{new BYTE[size]};
+
 		status = RegQueryValueExA(
-				key_,
-				loc_.elem.c_str(),
-				0,
-				nullptr,
-				buf.get(),
-				&size
-				);
+			key_, loc_.elem.c_str(), 0, nullptr, buf.get(), &size);
 
 		v.assign(reinterpret_cast<char*>(buf.get()), size);
 
@@ -228,17 +189,9 @@ private:
 	bool create_no_lock()
 	{
 		DWORD disposition;
-		LSTATUS status = RegCreateKeyExA(
-				loc_.key,
-				loc_.subkey.c_str(),
-				0,
-				nullptr,
-				REG_OPTION_NON_VOLATILE,
-				KEY_ALL_ACCESS,
-				nullptr,
-				&key_,
-				&disposition
-				);
+		LSTATUS status = RegCreateKeyExA(loc_.key, loc_.subkey.c_str(), 0,
+			nullptr, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, nullptr, &key_,
+			&disposition);
 		return status == ERROR_SUCCESS;
 	}
 
