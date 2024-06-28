@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 find_package(nlohmann_json REQUIRED)
 find_package(spdlog REQUIRED)
+find_package(argh REQUIRED)
 
 add_executable(${PROJECT_NAME}
 	${CMAKE_CURRENT_LIST_DIR}/src/perfect_invaxion.cpp
@@ -20,6 +21,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 target_link_libraries(${PROJECT_NAME} PRIVATE
 	nlohmann_json::nlohmann_json
 	spdlog::spdlog
+	argh
 	)
 
 target_sources(${PROJECT_NAME} PRIVATE
@@ -27,6 +29,7 @@ target_sources(${PROJECT_NAME} PRIVATE
 	${CMAKE_CURRENT_LIST_DIR}/src/save/invaxion_save.h
 	${CMAKE_CURRENT_LIST_DIR}/src/save/detail/windows_registry.h
 	${CMAKE_CURRENT_LIST_DIR}/src/platform/nt_helper.h
+	${CMAKE_CURRENT_LIST_DIR}/src/cmd_param.h
 	)
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION /)

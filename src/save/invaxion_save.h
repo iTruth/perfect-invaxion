@@ -42,6 +42,11 @@ public:
 		}
 	}
 
+	void set_trunc(bool b)
+	{
+		trunc_mode_ = b;
+	}
+
 	EXECUTOR_REQUIRE(detail::windows_registry)
 	bool select(std::string_view save_name)
 	{
@@ -89,15 +94,25 @@ public:
 
 		auto save_data = nlohmann::json::parse(save_file);
 		auto existing_save = read_json();
-		existing_save["/0"_json_pointer]["CharacterList"] = save_data["/0"_json_pointer]["CharacterList"];
-		existing_save["/0"_json_pointer]["songList"] = save_data["/0"_json_pointer]["songList"];
-		existing_save["/0"_json_pointer]["themeList"] = save_data["/0"_json_pointer]["themeList"];
-		existing_save["/0"_json_pointer]["currencyInfo"] = save_data["/0"_json_pointer]["currencyInfo"];
-		existing_save["/0"_json_pointer]["vipInfo"] = save_data["/0"_json_pointer]["vipInfo"];
-		existing_save["/0"_json_pointer]["level"] = save_data["/0"_json_pointer]["level"];
-		existing_save["/0"_json_pointer]["curExp"] = save_data["/0"_json_pointer]["curExp"];
+		if (trunc_mode_) {
+			save_data["/0"_json_pointer]["name"] = existing_save["/0"_json_pointer]["name"];
+			save_data["/0"_json_pointer]["token"] = existing_save["/0"_json_pointer]["token"];
+			save_data["/0"_json_pointer]["steamId"] = existing_save["/0"_json_pointer]["steamId"];
+			save_data["/0"_json_pointer]["sessionId"] = existing_save["/0"_json_pointer]["sessionId"];
 
-		return write_json(existing_save);
+			return write_json(save_data);
+
+		} else {
+			existing_save["/0"_json_pointer]["CharacterList"] = save_data["/0"_json_pointer]["CharacterList"];
+			existing_save["/0"_json_pointer]["songList"] = save_data["/0"_json_pointer]["songList"];
+			existing_save["/0"_json_pointer]["themeList"] = save_data["/0"_json_pointer]["themeList"];
+			existing_save["/0"_json_pointer]["currencyInfo"] = save_data["/0"_json_pointer]["currencyInfo"];
+			existing_save["/0"_json_pointer]["vipInfo"] = save_data["/0"_json_pointer]["vipInfo"];
+			existing_save["/0"_json_pointer]["level"] = save_data["/0"_json_pointer]["level"];
+			existing_save["/0"_json_pointer]["curExp"] = save_data["/0"_json_pointer]["curExp"];
+
+			return write_json(existing_save);
+		}
 	}
 
 
@@ -106,7 +121,7 @@ public:
 	{
 		select(target_field);
 
-		if (save_.is_exist()) {
+		if (!trunc_mode_ && save_.is_exist()) {
 			std::ifstream save_file(custom_save.data());
 			if (!save_file.is_open()) {
 				spdlog::warn("While fixing {}:", target_field);
@@ -148,6 +163,7 @@ public:
 private:
 	save_type save_;
 	location_type loc_;
+	bool trunc_mode_ = false;
 };
 
 } // namespace save
