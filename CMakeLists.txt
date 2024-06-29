@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 3.5)
 
-project(pinvaxion VERSION 1.1 LANGUAGES C CXX)
+project(pinvaxion VERSION 1.2 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
