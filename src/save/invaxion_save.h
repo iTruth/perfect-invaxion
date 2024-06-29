@@ -77,18 +77,14 @@ public:
 		select(target_field);
 
 		if (!save_.is_exist()) {
-			spdlog::warn("While fixing server emulator save:");
-			spdlog::warn("\tServerEmulator save not found!");
-			spdlog::warn("\tPlease register an account first.");
-			spdlog::warn("\tSkip...");
+			spdlog::warn("Failed to fix server emulator save: ServerEmulator save not found!");
+			spdlog::warn("Please register an account first.");
 			return false;
 		}
 
 		std::ifstream save_file(custom_save.data());
 		if (!save_file.is_open()) {
-			spdlog::warn("While fixing server emulator save:");
-			spdlog::warn("\t{} not found!", custom_save);
-			spdlog::warn("\tSkip...");
+			spdlog::warn("Failed to fix {}: {} not found!", target_field, custom_save);
 			return false;
 		}
 
@@ -135,9 +131,7 @@ public:
 		if (!trunc_mode_ && save_.is_exist()) {
 			std::ifstream save_file(custom_save.data());
 			if (!save_file.is_open()) {
-				spdlog::warn("While fixing {}:", target_field);
-				spdlog::warn("\t{} not found!", custom_save);
-				spdlog::warn("\tSkip...");
+				spdlog::warn("Failed to fix {}: {} not found!", target_field, custom_save);
 				return false;
 			}
 
@@ -161,9 +155,7 @@ public:
 
 		std::ifstream save_file(custom_save.data());
 		if (!save_file.is_open()) {
-			spdlog::warn("While fixing {}:", target_field);
-			spdlog::warn("\t{} not found!", custom_save);
-			spdlog::warn("\tSkip...");
+			spdlog::warn("Failed to fix {}: {} not found!", target_field, custom_save);
 			return false;
 		}
 

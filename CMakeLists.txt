@@ -20,7 +20,8 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
 	nlohmann_json::nlohmann_json
-	spdlog::spdlog
+	spdlog::spdlog_header_only
+	fmt::fmt-header-only
 	argh
 	)
 

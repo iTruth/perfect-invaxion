@@ -13,6 +13,8 @@ typedef enum _PROCESSINFOCLASS {
 							 // PROCESS_EXTENDED_BASIC_INFORMATION
 } PROCESSINFOCLASS;
 
+typedef _Return_type_success_(return >= 0) LONG NTSTATUS;
+
 typedef NTSTATUS (*NtQueryInformationProcess_type)(HANDLE ProcessHandle,
 	PROCESSINFOCLASS ProcessInformationClass, PVOID ProcessInformation,
 	ULONG ProcessInformationLength, PULONG ReturnLength);
