@@ -20,10 +20,16 @@ int main(int argc, char *argv[])
 	auto cmdl = perfect_invaxion::cmd::parse_cmd(argc, argv);
 
 	spdlog::info("Perfect Invaxion Project " PROJECT_VERSION);
-	cmdl->print_param();
+
+	if (cmdl->get_help_mode()) {
+		cmdl->print_help();
+		return EXIT_SUCCESS;
+	}
+
+	cmdl->print_param_status();
 
 	perfect_invaxion::save::invaxion_save save;
-	save.set_trunc(cmdl->trunc_mode);
+	save.set_trunc(cmdl->get_trunc_mode());
 
 	save.fix_server_emulator_save("ServerEmulator/UserDatabase_h654456162",
 		"save/ServerEmulator_Save.json");
